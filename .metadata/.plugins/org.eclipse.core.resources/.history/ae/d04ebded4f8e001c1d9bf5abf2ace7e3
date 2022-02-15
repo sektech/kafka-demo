@@ -1,0 +1,11 @@
+package com.training.kafka_project_demo;
+
+public class OrderConsumer {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+
+	}
+
+}

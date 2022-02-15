@@ -1,0 +1,35 @@
+package com.example.junitdemo;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import com.example.junitdemo.service.CalculatorService;
+
+
+class CalculatorMockTest {
+	Calculator cal;
+	
+	@BeforeEach
+	public  void setup() {
+		cal = new Calculator();
+		cal.setService(new CalculatorStubTest());
+	}
+
+	@Test
+	void testAddNumbers() {
+		
+		int result = cal.addNumbers();
+		assertEquals(6, result);
+	}
+
+	@Test
+	void testAddNumbersWithEmpty() {		
+		int result = cal.addNumbers();
+		assertEquals(0, result);
+	}
+	
+	
+
+}

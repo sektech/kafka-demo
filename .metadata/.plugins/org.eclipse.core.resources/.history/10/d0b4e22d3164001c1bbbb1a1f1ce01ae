@@ -1,0 +1,46 @@
+package com.training.JNuit5Features;
+
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.when;
+
+import java.sql.SQLException;
+
+import org.junit.Test;
+import org.mockito.Mock;
+
+import com.training.JNnit5Features.exception.BOException;
+import com.training.JNuit5Features.BA.OrderBOImp;
+import com.training.JNuit5Features.dao.OrderDAO;
+import com.training.JNunit5Features.dto.Order;
+
+
+public class OrderBOImpTest {
+	
+	@Mock
+	OrderDAO orderdao;
+
+	@Test
+	public void testPlaceOrder() throws SQLException, BOException {
+		
+		OrderBOImp bo = new OrderBOImp();
+		bo.setOrderdao(orderdao);
+		
+		Order order = new Order();
+		when(orderdao.create(order)).thenReturn(1);
+		
+		boolean result = bo.placeOrder(order);
+		
+		assertTrue(result);
+	}
+
+	@Test
+	public void testCancelOrder() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testDeleteOrder() {
+		fail("Not yet implemented");
+	}
+
+}

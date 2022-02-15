@@ -1,0 +1,6 @@
+package com.example.junitdemo.service;
+
+public interface CalculatorService {
+	
+
+}

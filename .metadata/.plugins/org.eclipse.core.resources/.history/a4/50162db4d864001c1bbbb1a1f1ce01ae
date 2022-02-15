@@ -1,0 +1,101 @@
+package com.training.JNuit5Features;
+
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import java.sql.SQLException;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
+
+import com.training.JNnit5Features.exception.BOException;
+import com.training.JNuit5Features.BA.OrderBOImp;
+import com.training.JNuit5Features.dao.OrderDAO;
+import com.training.JNunit5Features.dto.Order;
+
+@RunWith(MockitoJUnitRunner.class)
+public class OrderBOImpTest {
+	Order order;
+	@Mock
+	OrderDAO orderdao;
+	
+	@InjectMocks
+	OrderBOImp bo;
+	
+	@Before
+	public void setup() {
+		bo.setOrderdao(orderdao);
+		order = new Order();
+	}
+
+	@Test
+	public void testPlaceOrder() throws SQLException, BOException {
+		
+		 
+		when(orderdao.create(order)).thenReturn(1);
+		
+		boolean result = bo.placeOrder(order);		
+		assertTrue(result);
+		
+		verify(orderdao).create(order);
+	}
+
+	@Test
+	public void testPlaceOrderNegative() throws SQLException, BOException {
+		
+		when(orderdao.create(order)).thenReturn(0);
+		
+		boolean result = bo.placeOrder(order);		
+		assertFalse(result);
+		
+		verify(orderdao).create(order);
+	}
+	
+	@Test(expected = BOException.class)
+	public void testPlaceOrderThrowException() throws SQLException, BOException {
+		
+		when(orderdao.create(order)).thenThrow(SQLException.class);
+		bo.placeOrder(order);
+		
+	}
+	
+	@Test
+	public void testCancelOrder() throws SQLException, BOException {
+	//	fail("Not yet implemented");
+		when(orderdao.read(12)).thenReturn(order);
+		when(orderdao.update(order)).thenReturn(1);
+		boolean result = bo.cancelOrder(12);
+		
+		assertTrue(result);
+		verify(orderdao).read(12);
+	}
+
+	@Test
+	public void testCancelOrderNegative() throws SQLException, BOException {
+	//	fail("Not yet implemented");
+		when(orderdao.read(12)).thenReturn(order);
+		when(orderdao.update(order)).thenReturn(0);
+		boolean result = bo.cancelOrder(12);
+		
+		assertFalse(result);
+		
+	}
+
+	@Test(expected = BOException.class)
+	public void testCancelOrderThrowException() throws SQLException, BOException {
+	//	fail("Not yet implemented");
+		when(orderdao.read(12)).thenThrow(SQLException.class);
+		 bo.cancelOrder(12);
+	}
+
+	@Test
+	public void testDeleteOrder() {
+		//fail("Not yet implemented");
+	}
+
+}

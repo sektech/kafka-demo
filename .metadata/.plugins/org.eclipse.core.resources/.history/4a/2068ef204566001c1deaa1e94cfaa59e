@@ -1,0 +1,38 @@
+package com.example.junitdemo;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+import com.example.junitdemo.service.CalculatorService;
+
+class CalculatorStubTest implements CalculatorService{
+
+	@Override
+	public int[] retriveData() {
+		// TODO Auto-generated method stub
+		return new int[] {1,2,3};
+	}
+	
+}
+
+class CalculatorTest {
+
+	@Test
+	void testAddNumbers() {
+		Calculator cal = new Calculator();
+		cal.setService(new CalculatorStubTest());
+		int result = cal.addNumbers();
+		assertEquals(9, result);
+	}
+
+	@Test
+	void testAddNumbersWithEmpty() {
+		Calculator cal = new Calculator();
+		int result = cal.addNumbers(new int[] {});
+		assertEquals(0, result);
+	}
+	
+	
+
+}

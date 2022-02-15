@@ -1,0 +1,23 @@
+package com.example.junitdemo;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class CalculatorTest {
+
+	@Test
+	void testAddNumbers() {
+		Calculator cal = new Calculator();
+		int result = cal.addNumbers(new int[] {2,3,4});
+		assertEquals(9, result);
+	}
+
+	@Test
+	void testAddNumbersWithEmpty() {
+		Calculator cal = new Calculator();
+		int result = cal.addNumbers(new int[] {});
+		assertEquals(0, result);
+	}
+
+}

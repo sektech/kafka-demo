@@ -1,0 +1,20 @@
+package com.example.junitdemo;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.example.junitdemo.samples.Calculator;
+
+@SpringBootTest
+public class CalculatorTest {
+
+	@Test
+	public void testAddnumbers() {
+		Calculator cal = new Calculator();
+		int result=cal.addnumbers(new int[] {2,3,4});
+		assertEquals(9, result);
+	}
+
+}

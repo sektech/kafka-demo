@@ -1,0 +1,13 @@
+package com.training.kafka_consumer_demo;
+
+import org.apache.kafka.common.serialization.Deserializer;
+
+public class ProductDeserializer implements Deserializer<Product> {
+
+	@Override
+	public Product deserialize(String topic, byte[] data) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

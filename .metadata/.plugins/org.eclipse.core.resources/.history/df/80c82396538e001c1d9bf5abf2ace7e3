@@ -1,0 +1,5 @@
+package com.training.kafka_project_demo;
+
+public class ProductSerializer {
+
+}

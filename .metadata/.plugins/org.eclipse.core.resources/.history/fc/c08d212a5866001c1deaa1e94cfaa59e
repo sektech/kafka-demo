@@ -1,0 +1,25 @@
+package com.example.junitdemo;
+
+import com.example.junitdemo.service.CalculatorService;
+
+public class Calculator {
+	
+	private CalculatorService service;
+	
+	
+	public void setService(CalculatorService service) {
+		this.service = service;
+	}
+
+
+	public int addNumbers() {
+		int[] data = service.retriveData();
+		int sum=0;
+		for (int i : data) {
+			sum +=i;
+		}
+		
+		return sum;
+	}
+
+}

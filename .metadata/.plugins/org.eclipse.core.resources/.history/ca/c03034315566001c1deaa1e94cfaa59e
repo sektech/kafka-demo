@@ -1,0 +1,39 @@
+package com.example.junitdemo;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+
+import com.example.junitdemo.service.CalculatorService;
+
+
+public class CalculatorMockTest {
+	
+	@Mock
+	CalculatorService service;
+	
+	@InjectMocks
+	Calculator cal;
+	
+	
+	@Test
+	void testAddNumbers() {
+		cal.setService(service);
+		when(service.retriveData()).thenReturn(new int[] {1,2,3});
+		int result = cal.addNumbers();
+		assertEquals(6, result);
+	};
+
+	@Test
+	void testAddNumbersWithEmpty() {		
+		int result = cal.addNumbers();
+		assertEquals(0, result);
+	}
+	
+	
+
+}

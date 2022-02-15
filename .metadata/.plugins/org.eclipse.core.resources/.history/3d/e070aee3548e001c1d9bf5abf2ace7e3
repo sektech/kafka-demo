@@ -1,0 +1,5 @@
+package com.training.kafka_consumer_demo;
+
+public class ProductConsumer {
+
+}

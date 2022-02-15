@@ -1,0 +1,34 @@
+package com.example.junitdemo;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
+
+import org.junit.Before;
+import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnitRunner;
+
+import com.example.junitdemo.service.CalculatorService;
+
+@RunWith(MockitoJUnitRunner.class)
+class CalculatorMockitoTest {
+	
+	@Mock
+	CalculatorService service;
+	
+	@InjectMocks
+	Calculator cal;
+	
+@Before
+public void setup() {
+	MockitoAnnotations.initMocks(this);
+}
+	@Test
+	void testAddNumbers() {
+		when(service.retriveData()).thenReturn(new int[] {1,2,4});
+	}
+
+}

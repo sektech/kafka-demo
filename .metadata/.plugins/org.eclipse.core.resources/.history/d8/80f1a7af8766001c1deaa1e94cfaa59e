@@ -1,0 +1,14 @@
+package com.example.restdemo.controller;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class ItemControllerTest {
+
+	@Test
+	void testGetItem() {
+		fail("Not yet implemented");
+	}
+
+}

@@ -1,0 +1,14 @@
+package com.example.junitdemo;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class CalculatorMockitoTest {
+
+	@Test
+	void testAddNumbers() {
+		
+	}
+
+}
