@@ -14,6 +14,7 @@ public class ProductConsumer {
 	
 	   public static void main( String[] args )
 	    {
+		   System.out.println("Consumer");
 	    	Properties props = new Properties();
 			props.setProperty("bootstrap.servers", "localhost:9092");
 			props.setProperty("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
